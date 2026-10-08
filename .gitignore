@@ -1,2 +1,12 @@
-.env
+*.env
 .venv/
+__pycache__/
+*.pyc
+*.log
+*.bak
+*.swp
+*.swo
+*.DS_Store
+*.sqlite
+*.h5
+*.ipynb_checkpoints
