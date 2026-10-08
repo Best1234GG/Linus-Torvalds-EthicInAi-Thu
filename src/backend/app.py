@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from models import predict as pd
+from models.predictss import predict_model
 
 app = FastAPI()
 
@@ -26,11 +26,18 @@ class Pred_IP(BaseModel):
     YearsAtCompany: int
     YearsSinceLastPromotion: int
     YearsWithCurrManager: int
+    PercentSalaryHike: int
+    TotalWorkingYears: int
+    YearsInCurrentRole: int
+
     
-    
+@app.get("/")
+def home():
+    return {"message": "Welcome to the API"}
+   
     
 @app.post("/predict")
 def predict(ip: Pred_IP):
     ip_dict = ip.dict()
-    pred = pd.predict(ip_dict)
+    pred = predict_model(ip_dict)
     return { "prediction": pred }

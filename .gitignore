@@ -10,3 +10,4 @@ __pycache__/
 *.sqlite
 *.h5
 *.ipynb_checkpoints
+*.continue
