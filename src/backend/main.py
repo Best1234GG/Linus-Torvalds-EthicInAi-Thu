@@ -1,7 +1,5 @@
 import uvicorn
-from fastapi import FastAPI
-
-app = FastAPI()
+from src.backend.app import app
 
 
 if __name__ == "__main__":
