@@ -1,4 +1,5 @@
 *.env
+*.env
 .venv/
 __pycache__/
 *.pyc
@@ -8,7 +9,6 @@ __pycache__/
 *.swo
 *.DS_Store
 *.sqlite
-*.h5
 *.ipynb_checkpoints
 *.continue
 node_modules/
@@ -20,7 +20,6 @@ dist-ssr/
 
 # Data & Large AI Model Weights
 data/
-*.pkl
 *.parquet
 *.pt
 *.onnx
