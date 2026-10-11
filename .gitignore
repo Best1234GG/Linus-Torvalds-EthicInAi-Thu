@@ -11,3 +11,20 @@ __pycache__/
 *.h5
 *.ipynb_checkpoints
 *.continue
+node_modules/
+
+# Frontend / Vite Build Outputs
+dist/
+dist-ssr/
+*.local
+
+# Data & Large AI Model Weights
+data/
+*.pkl
+*.parquet
+*.pt
+*.onnx
+
+# IDE & OS Specific
+.vscode/
+Thumbs.db
