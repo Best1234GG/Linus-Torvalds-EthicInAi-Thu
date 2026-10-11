@@ -6,9 +6,9 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://de83-118-173-212-29.ngrok-free.app"],  # ใส่ URL ของ Frontend ที่คุณใช้
-    allow_methods=["*"],  # อนุญาตทุก method
-    allow_headers=["*"],  # อนุญาตทุก header
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
     allow_credentials=True,
 )
 class Pred_IP(BaseModel):

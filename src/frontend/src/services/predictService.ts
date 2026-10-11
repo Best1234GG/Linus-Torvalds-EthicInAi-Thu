@@ -30,7 +30,6 @@ export interface PredictResponse {
 }
 
 export async function sendPrediction(formValues: Record<string, string>): Promise<PredictResponse> {
-  // แปลงค่า string จาก React form ให้ตรงกับ Pydantic Schema ของ FastAPI
   const payload: PredIPPayload = {
     Age: parseInt(formValues.Age, 10) || 0,
     DailyRate: parseInt(formValues.DailyRate, 10) || 0,
@@ -58,7 +57,9 @@ export async function sendPrediction(formValues: Record<string, string>): Promis
     YearsInCurrentRole: parseInt(formValues.YearsInCurrentRole, 10) || 0,
   };
 
-  const response = await fetch("/predict", {
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+
+  const response = await fetch(`${API_BASE_URL}/predict`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,7 +68,6 @@ export async function sendPrediction(formValues: Record<string, string>): Promis
   });
 
   if (!response.ok) {
-    // อ่านรายละเอียดข้อผิดพลาดที่ FastAPI ส่งกลับมาเพื่อดูว่าฟิลด์ใดมีปัญหา
     const errBody = await response.json().catch(() => null);
     if (errBody && errBody.detail) {
       const detailMessages = Array.isArray(errBody.detail)

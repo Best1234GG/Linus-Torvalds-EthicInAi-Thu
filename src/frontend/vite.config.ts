@@ -37,7 +37,7 @@ react(),
       allowedHosts: true,
       proxy: {
         '/predict': {
-          target: 'https://6dfe-118-173-212-29.ngrok-free.app', // พอร์ตของ FastAPI
+          target: 'https://6dfe-118-173-212-29.ngrok-free.app',
           changeOrigin: true,
         },
       },
