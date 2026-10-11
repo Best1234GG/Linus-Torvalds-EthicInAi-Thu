@@ -37,7 +37,7 @@ react(),
       allowedHosts: true,
       proxy: {
         '/predict': {
-          target: 'https://linus-torvalds-ethicinai-thu.onrender.com/',
+          target: 'https://linus-torvalds-ethicinai-thu.onrender.com',
           changeOrigin: true,
         },
       },
