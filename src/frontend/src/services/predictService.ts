@@ -80,3 +80,19 @@ export async function sendPrediction(formValues: Record<string, string>): Promis
 
   return response.json();
 }
+
+// Health check: GET /predict on FastAPI answers 405 (method not allowed) when the
+// server is up. Goes through the same base URL / dev proxy as sendPrediction.
+export async function checkApiHealth(timeoutMs = 60000): Promise<boolean> {
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(`${API_BASE_URL}/predict`, { method: "GET", signal: controller.signal });
+    return response.status === 405 || response.ok;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
